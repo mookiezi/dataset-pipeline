@@ -129,7 +129,7 @@ flowchart TD
 | `sortpar`            | `.parquet`                          | `_order.parquet`              |
 | `finaltouch`         | `_order.parquet`                    | `train.parquet`               |
 | `parjson`            | `train.parquet`                     | `dataset_infos.json`          |
-| `tokens`             | CSV at any stage                    | `token.log`                   |
+| `tokens`             | CSV at any stage                    | `_tokenstats.txt`             |
 | `turnhist`           | CSV at any stage                    | histogram `.png`, table `.txt`|
 
 ---
