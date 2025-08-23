@@ -40,6 +40,7 @@ flowchart TD
     V --> W["finaltouch.py<br>(remove temporary columns)"]:::pack
     W --> X["parjson.py<br>(dataset_infos.json)"]:::meta
     X --> Y["tokens.py (token.log)"]:::stats
+    Y --> Z["turnhist.py<br>(turn-count histogram)"]:::hist
 
     %% STYLE CLASSES (use colons)
     classDef c1 fill:#ffffff,stroke:#000000,color:#000000,stroke-width:2px
@@ -63,6 +64,7 @@ flowchart TD
     classDef stats fill:#5e35b1,stroke:#311b92,color:#ffffff,stroke-width:3px
     classDef pack fill:#fbc02d,stroke:#f57f17,color:#000000,stroke-width:3px
     classDef meta fill:#ad1457,stroke:#6a1b9a,color:#ffffff,stroke-width:3px
+    classDef hist fill:#1565c0,stroke:#0d47a1,color:#ffffff,stroke-width:3px
 ```
 
 ---
@@ -104,6 +106,7 @@ flowchart TD
 -   **`finaltouch.py`:** Removes temporary columns → write `train.parquet`.
 -   **`parjson.py`:** Emits `dataset_infos.json` from Parquet footer for HF Hub compatibility.
 -   **`tokens.py`:** Produces `token.log` with token histograms and totals for capacity planning.
+-   **`turnhist.py`**: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
 
 ---
 
