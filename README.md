@@ -35,12 +35,15 @@ flowchart TD
     Q --> R["tos.py (remove ToS risk)"]:::tos
     R --> S1["fixend.py<br>(normalize end tags)"]:::fix
     S1 --> T["stats.py<br>(adds per-sample statistics)"]:::stats
+
+    %% Stats branches → center par.py
+    T --> Y["tokens.py (token.log)"]:::stats
     T --> U["par.py (CSV→Parquet)"]:::pack
+    T --> Z["turnhist.py<br>(turn-count histogram)"]:::hist
+
     U --> V["sortpar.py<br>(sorts Parquet)"]:::pack
     V --> W["finaltouch.py<br>(remove temporary columns)"]:::pack
     W --> X["parjson.py<br>(dataset_infos.json)"]:::meta
-    X --> Y["tokens.py (token.log)"]:::stats
-    Y --> Z["turnhist.py<br>(turn-count histogram)"]:::hist
 
     %% STYLE CLASSES (use colons)
     classDef c1 fill:#ffffff,stroke:#000000,color:#000000,stroke-width:2px
@@ -126,7 +129,8 @@ flowchart TD
 | `sortpar`            | `.parquet`                          | `_order.parquet`              |
 | `finaltouch`         | `_order.parquet`                    | `train.parquet`               |
 | `parjson`            | `train.parquet`                     | `dataset_infos.json`          |
-| `tokens`             | `train.parquet` or CSV at any stage | `token.log`                   |
+| `tokens`             | CSV at any stage                    | `token.log`                   |
+| `turnhist`           | CSV at any stage                    | histogram `.png`, table `.txt`|
 
 ---
 
