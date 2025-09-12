@@ -1,7 +1,7 @@
 # Discord Dataset Creation Pipeline
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mookiezi/site/refs/heads/main/pipeline-header.png" alt="Dataset Pipeline Header">
+  <img src="https://raw.githubusercontent.com/mookiezi/site/refs/heads/main/pipeline-header-new.png" alt="Dataset Pipeline Header">
 </p>
 
 End-to-end flow from raw Discord traffic to reproducible Parquet dataset with stats and token logs. Every stage is idempotent and CLI-driven.
