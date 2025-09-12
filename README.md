@@ -22,7 +22,7 @@ flowchart TD
         G --> H["chains.sh (wrapper script)"]:::c9
         H --> J["chainsrunner<br>(SQL inside sh)"]:::c10
     J --> K["smartclean.py"]:::clean
-    J --> L["split.py + smartcleansplit.py + combineall.py"]:::clean
+    J --> L["splitcsv.py + smartcleansplit.py + combineall.py"]:::clean
     end
     style S fill:#512da8,stroke:#311b92,color:#ffffff,stroke-width:3px
 
@@ -31,7 +31,7 @@ flowchart TD
     L --> M2["dump_2.csv"]:::file
 
     %% Both go into combineall.py
-    M1 --> N["combineall.py<br>(merge the table dumps)"]:::c15
+    M1 --> N["combineall.py<br>(merge the smartcleaned tables)"]:::c15
     M2 --> N
     N --> O["filterturns.py (min 2)"]:::c16
     O --> P["dedupe.py (filters repeated exchanges)"]:::c17
@@ -87,7 +87,7 @@ flowchart TD
 
 -   **`chainsrunner(.sql)` (SQL in `chains.sh`):** Builds reply chains rooted by messages for efficient downstream splits.
 -   **Path A:** `smartclean.py` for one-shot cleaning of the table dump. Normalizes text, applies structural changes and numerous safety/spam filters, and runs a final format validator before handing off to consolidation.
--   **Path B:** `split.py` + `smartcleansplit.py` + `combineall.py` for shard-wise cleaning. Output is one CSV per table.
+-   **Path B:** `splitcsv.py` + `smartcleansplit.py` + `combineall.py` for shard-wise cleaning. Output is one CSV per table.
 
 ### 2) Consolidation
 
@@ -145,6 +145,7 @@ flowchart TD
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/splitcsv.py](https://github.com/mookiezi/dataset-toolkit/blob/main/split.csv)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py](https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py](https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py)
