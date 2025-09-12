@@ -122,7 +122,7 @@ flowchart TD
 | Stage                       | Input                        | Output                        |
 | --------------------         | ----------------------------- | ------------------------------ |
 | `chains.sh`                  | `filter.sql` (Postgres)       | table dumps (`dump_*.csv`)     |
-| Per-table processing         | N message tables              | N cleaned CSVs                 |
+| Per-table processing:<br>`smartclean` / `splitcsv+smartcleansplit` | N message tables | N cleaned CSVs                 |
 | `combineall`                 | N cleaned CSVs                | `combined.csv`                 |
 | `filterturns min 2 max MAX`  | `combined.csv`                | `combined_2plus.csv`           |
 | `dedupe`                     | `combined_2plus.csv`          | `_deduped.csv`                 |
