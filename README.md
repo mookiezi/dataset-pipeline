@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/mookiezi/site/refs/heads/main/Discord-Dataset-Pipeline.png" alt="Dataset Pipeline Header">
 </p>
 
-End-to-end flow from raw Discord data to final Parquet dataset with full statistics. Every stage is independant, idempotent, and CLI-driven for ease of automation.
+A full Discord dataset pipeline with end-to-end flow from raw Discord data to final Parquet dataset with full statistics — every stage independant, idempotent, and CLI-driven for ease of automation. 
 
 ## High-Level Flow
 
