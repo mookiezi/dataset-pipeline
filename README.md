@@ -31,7 +31,7 @@ flowchart TD
     L --> M2["dump_2.csv"]:::file
 
     %% Both go into combineall.py
-    M1 --> N["combineall.py<br>(merge the smartcleaned tables)"]:::c15
+    M1 --> N["combineall.py<br>(merge the cleaned tables)"]:::c15
     M2 --> N
     N --> O["filterturns.py (min 2)"]:::c16
     O --> P["dedupe.py (filters repeated exchanges)"]:::c17
