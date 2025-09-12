@@ -43,7 +43,7 @@ flowchart TD
     %% Stats branches → center par.py
     T --> Y["tokens.py (token.log)"]:::stats
     T --> U["par.py (CSV→Parquet)"]:::pack
-    T --> Z["turnhist.py<br>(turn-count histogram)"]:::hist
+    T --> Z["turnstats.py<br>(turn-count histogram)"]:::hist
 
     U --> V["sortpar.py<br>(sorts Parquet)"]:::pack
     V --> W["cleanpar.py<br>(remove temporary columns)"]:::pack
@@ -95,7 +95,7 @@ flowchart TD
 
 ### 3) Quality and Safety
 
--   **`filterturns.py min 2`:** Enforces a minimum amount of turns in each conversations length.
+-   **`filterturns.py min 2 max MAX_TURNS`:** Enforces a minimum amount of turns in each conversations length and set the max to the natural maximum turns.
 -   **`dedupe.py`:** Dedupes exact and last-assistant exchanges for verbatim repeats and reply-tail clones to ensures dataset uniqueness.
 -   **`dropcols.py`:** Drops PII columns.
 -   **`tos.py`:** Remove ToS risk content (CSA, slurs, doxxing, self-harm, etc.), leet/diacritic aware.
@@ -113,7 +113,7 @@ flowchart TD
 -   **`cleanpar.py`:** Removes temporary columns → write `train.parquet`.
 -   **`parjson.py`:** Emits `dataset_infos.json` from Parquet footer for HF Hub compatibility.
 -   **`tokens.py`:** Produces `token.log` with token histograms and totals for capacity planning.
--   **`turnhist.py`**: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
+-   **`turnstats.py`**: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
 
 ---
 
@@ -131,23 +131,12 @@ flowchart TD
 | `fixend`                     | `_pure_clean.csv`             | `_pure_clean_fixed.csv`        |
 | `stats`                      | `_pure_clean_fixed.csv`       | `_pure_clean_fixed_stats.csv`  |
 | `tokens`                     | CSV at final stage            | `_tokenstats.txt`              |
-| `turnhist`                   | CSV at final stage            | histogram `.png`, table `.txt` |
+| `turnstats`                  | CSV at final stage            | histogram `.png`, table `.txt` |
 | `par`                        | `_pure_clean_fixed_stats.csv` | `.parquet`                     |
 | `sortpar`                    | `.parquet`                    | `_order.parquet`               |
 | `cleanpar`                   | `_order.parquet`              | `train.parquet`                |
 | `parjson`                    | `train.parquet`               | `dataset_infos.json`           |
 
-
----
-
-## Script References
-
-Here’s the full **References** section rewritten in the format you asked, using the repo you showed (`dataset-toolkit`) and filling in everything from your README order. I’ve also kept the extras you had already (from `dataset-cleaning-toolkit`) so the pipeline cross-links are complete:
-
----
-
-## Script References
-Got it — here’s the **full merged References section**, covering **both repos** (`dataset-toolkit` and `dataset-cleaning-toolkit`) and placed in the **correct README pipeline order** you gave. Nothing is missing now:
 
 ---
 
@@ -168,11 +157,11 @@ Got it — here’s the **full merged References section**, covering **both repo
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py](https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnhist.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnhist.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnstats.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnstats.py)
 
 ---
 
-## Shorthand Dataset Script Sequence
+## Shorthand Dataset Construction Sequence
 
-**filter.sql → chains.sh → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnhist**
+**filter → chains → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnhist**
 
