@@ -156,10 +156,10 @@ flowchart TD
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/stats.py](https://github.com/mookiezi/dataset-toolkit/blob/main/stats.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/tokens.py](https://github.com/mookiezi/dataset-toolkit/blob/main/tokens.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/par.py](https://github.com/mookiezi/dataset-toolkit/blob/main/par.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/sortpar.py](https://github.com/mookiezi/dataset-toolkit/blob/main/sortpar.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-toolkit//blob/main/cleanpar.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py](https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnstats.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnstats.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/turnstats.py](https://github.com/mookiezi/dataset-toolkit//blob/main/turnstats.py)
 
 ---
 
