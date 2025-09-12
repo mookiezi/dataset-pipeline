@@ -140,8 +140,8 @@ flowchart TD
 
 ## Script References
 
--   [https://github.com/mookiezi/filters/blob/main/filter.sql](https://github.com/mookiezi/filters/blob/main/filter.sql)
--   [https://github.com/mookiezi/filters/blob/main/smartclean.py](https://github.com/mookiezi/filters/blob/main/smartclean.py)
--   [https://github.com/mookiezi/filters/blob/main/tos.py](https://github.com/mookiezi/filters/blob/main/tos.py)
--   [https://github.com/mookiezi/filters/blob/main/dedupe.py](https://github.com/mookiezi/filters/blob/main/dedupe.py)
--   [https://github.com/mookiezi/filters/blob/main/fixend.py](https://github.com/mookiezi/filters/blob/main/fixend.py)
+-   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
+-   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
+-   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py)
+-   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py)
+-   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py)
