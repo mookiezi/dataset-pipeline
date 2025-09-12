@@ -130,12 +130,12 @@ flowchart TD
 | `tos`                        | `_pure.csv`                   | `_pure_clean.csv`              |
 | `fixend`                     | `_pure_clean.csv`             | `_pure_clean_fixed.csv`        |
 | `stats`                      | `_pure_clean_fixed.csv`       | `_pure_clean_fixed_stats.csv`  |
+| `tokens`                     | CSV at final stage            | `_tokenstats.txt`              |
+| `turnhist`                   | CSV at final stage            | histogram `.png`, table `.txt` |
 | `par`                        | `_pure_clean_fixed_stats.csv` | `.parquet`                     |
 | `sortpar`                    | `.parquet`                    | `_order.parquet`               |
 | `cleanpar`                   | `_order.parquet`              | `train.parquet`                |
 | `parjson`                    | `train.parquet`               | `dataset_infos.json`           |
-| `tokens`                     | CSV at any stage              | `_tokenstats.txt`              |
-| `turnhist`                   | CSV at any stage              | histogram `.png`, table `.txt` |
 
 
 ---
