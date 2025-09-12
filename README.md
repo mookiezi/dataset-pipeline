@@ -145,6 +145,7 @@ flowchart TD
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py](https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py)
 * [https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py](https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py)
