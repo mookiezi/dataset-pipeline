@@ -142,8 +142,37 @@ flowchart TD
 
 ## Script References
 
--   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
--   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
--   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py)
--   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py)
--   [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py)
+Here’s the full **References** section rewritten in the format you asked, using the repo you showed (`dataset-toolkit`) and filling in everything from your README order. I’ve also kept the extras you had already (from `dataset-cleaning-toolkit`) so the pipeline cross-links are complete:
+
+---
+
+## Script References
+Got it — here’s the **full merged References section**, covering **both repos** (`dataset-toolkit` and `dataset-cleaning-toolkit`) and placed in the **correct README pipeline order** you gave. Nothing is missing now:
+
+---
+
+## Script References
+
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolkit/blob/main/chains.sh)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py](https://github.com/mookiezi/dataset-toolkit/blob/main/combineall.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py](https://github.com/mookiezi/dataset-toolkit/blob/main/filterturns.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/dropcols.py](https://github.com/mookiezi/dataset-toolkit/blob/main/dropcols.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/stats.py](https://github.com/mookiezi/dataset-toolkit/blob/main/stats.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/tokens.py](https://github.com/mookiezi/dataset-toolkit/blob/main/tokens.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/par.py](https://github.com/mookiezi/dataset-toolkit/blob/main/par.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/sortpar.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/cleanpar.py)
+* [https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py](https://github.com/mookiezi/dataset-toolkit/blob/main/parjson.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnhist.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/turnhist.py)
+
+---
+
+## Shorthand Dataset Script Sequence
+
+**filter.sql → chains.sh → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnhist**
+
