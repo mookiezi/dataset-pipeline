@@ -46,7 +46,7 @@ flowchart TD
     T --> Z["turnhist.py<br>(turn-count histogram)"]:::hist
 
     U --> V["sortpar.py<br>(sorts Parquet)"]:::pack
-    V --> W["finaltouch.py<br>(remove temporary columns)"]:::pack
+    V --> W["cleanpar.py<br>(remove temporary columns)"]:::pack
     W --> X["parjson.py<br>(dataset_infos.json)"]:::meta
 
     %% STYLE CLASSES (use colons)
@@ -110,7 +110,7 @@ flowchart TD
 
 -   **`par.py`:** Converts a `.csv` to `.parquet` with Zstandard compression.
 -   **`sortpar.py`:** Sorts samples by turn count, with a capped bonus for long texts.
--   **`finaltouch.py`:** Removes temporary columns → write `train.parquet`.
+-   **`cleanpar.py`:** Removes temporary columns → write `train.parquet`.
 -   **`parjson.py`:** Emits `dataset_infos.json` from Parquet footer for HF Hub compatibility.
 -   **`tokens.py`:** Produces `token.log` with token histograms and totals for capacity planning.
 -   **`turnhist.py`**: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
@@ -132,7 +132,7 @@ flowchart TD
 | `stats`                      | `_pure_clean_fixed.csv`       | `_pure_clean_fixed_stats.csv`  |
 | `par`                        | `_pure_clean_fixed_stats.csv` | `.parquet`                     |
 | `sortpar`                    | `.parquet`                    | `_order.parquet`               |
-| `finaltouch`                 | `_order.parquet`              | `train.parquet`                |
+| `cleanpar`                   | `_order.parquet`              | `train.parquet`                |
 | `parjson`                    | `train.parquet`               | `dataset_infos.json`           |
 | `tokens`                     | CSV at any stage              | `_tokenstats.txt`              |
 | `turnhist`                   | CSV at any stage              | histogram `.png`, table `.txt` |
