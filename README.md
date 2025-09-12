@@ -119,22 +119,24 @@ flowchart TD
 
 ## Outputs
 
-| Stage                | Input                               | Output                        |
-| -------------------- | ----------------------------------- | ----------------------------- |
-| Per-table processing | N message tables                    | N cleaned CSVs                |
-| `combineall`         | N cleaned CSVs                      | `combined.csv`                |
-| `filterturns min 2`  | `combined.csv`                      | `combined_2plus.csv`          |
-| `dedupe`             | `combined_2plus.csv`                | `_deduped.csv`                |
-| `dropcols`           | `_deduped.csv`                      | `_pure.csv`                   |
-| `tos`                | `_pure.csv`                         | `_pure_clean.csv`             |
-| `fixend`             | `_pure_clean.csv`                   | `_pure_clean_fixed.csv`       |
-| `stats`              | `_pure_clean_fixed.csv`             | `_pure_clean_fixed_stats.csv` |
-| `par`                | `_pure_clean_fixed_stats.csv`       | `.parquet`                    |
-| `sortpar`            | `.parquet`                          | `_order.parquet`              |
-| `finaltouch`         | `_order.parquet`                    | `train.parquet`               |
-| `parjson`            | `train.parquet`                     | `dataset_infos.json`          |
-| `tokens`             | CSV at any stage                    | `_tokenstats.txt`             |
-| `turnhist`           | CSV at any stage                    | histogram `.png`, table `.txt`|
+| Stage               | Input                        | Output                        |
+| -------------------- | ----------------------------- | ------------------------------ |
+| `chains.sh`          | `filter.sql` (Postgres)       | table dumps (`dump_*.csv`)     |
+| Per-table processing | N message tables              | N cleaned CSVs                 |
+| `combineall`         | N cleaned CSVs                | `combined.csv`                 |
+| `filterturns min 2`  | `combined.csv`                | `combined_2plus.csv`           |
+| `dedupe`             | `combined_2plus.csv`          | `_deduped.csv`                 |
+| `dropcols`           | `_deduped.csv`                | `_pure.csv`                    |
+| `tos`                | `_pure.csv`                   | `_pure_clean.csv`              |
+| `fixend`             | `_pure_clean.csv`             | `_pure_clean_fixed.csv`        |
+| `stats`              | `_pure_clean_fixed.csv`       | `_pure_clean_fixed_stats.csv`  |
+| `par`                | `_pure_clean_fixed_stats.csv` | `.parquet`                     |
+| `sortpar`            | `.parquet`                    | `_order.parquet`               |
+| `finaltouch`         | `_order.parquet`              | `train.parquet`                |
+| `parjson`            | `train.parquet`               | `dataset_infos.json`           |
+| `tokens`             | CSV at any stage              | `_tokenstats.txt`              |
+| `turnhist`           | CSV at any stage              | histogram `.png`, table `.txt` |
+
 
 ---
 
