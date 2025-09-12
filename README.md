@@ -81,39 +81,38 @@ flowchart TD
 ### 0) Source → Ingest
 
 -   **Discord → Discord Bot → discord.py → Node.js Express → Postgres.** Live capture into normalized message tables.
--   **filter.sql.** Database side prefilter to wipe tags and to drop unusable records early.
+-   **filter.sql** ¹. Database side prefilter to wipe tags and to drop unusable records early.
 
 ### 1) `process{…}` per message table
 
--   **`chainsrunner(.sql)` (SQL in `chains.sh`):** Builds reply chains rooted by messages for efficient downstream splits.
--   **Path A:** `smartclean.py` for one-shot cleaning of the table dump. Normalizes text, applies structural changes and numerous safety/spam filters, and runs a final format validator before handing off to consolidation.
--   **Path B:** `splitcsv.py` + `smartcleansplit.py` + `combineall.py` for shard-wise cleaning. Output is one CSV per table.
+-   **`chainsrunner(.sql)` (SQL in `chains.sh`)** ²: Builds reply chains rooted by messages for efficient downstream splits.  
+-   **Path A:** `smartclean.py` ³ for one-shot cleaning of the table dump. Normalizes text, applies structural changes and numerous safety/spam filters, and runs a final format validator before handing off to consolidation.  
+-   **Path B:** `splitcsv.py` ⁴ + `smartcleansplit.py` ⁵ + `combineall.py` ⁶ for shard-wise cleaning. Output is one CSV per table.
 
 ### 2) Consolidation
 
--   **`combineall.py`:** Merges the table dumps to a single `combined.csv`.
+-   **`combineall.py`** ⁶: Merges the table dumps to a single `combined.csv`.
 
 ### 3) Quality and Safety
 
--   **`filterturns.py min 2 max MAX_TURNS`:** Enforces a minimum amount of turns in each conversations length and set the max to the natural maximum turns.
--   **`dedupe.py`:** Dedupes exact and last-assistant exchanges for verbatim repeats and reply-tail clones to ensures dataset uniqueness.
--   **`dropcols.py`:** Drops PII columns.
--   **`tos.py`:** Remove ToS risk content (CSA, slurs, doxxing, self-harm, etc.), leet/diacritic aware.
+-   **`filterturns.py min 2 max MAX_TURNS`** ⁷: Enforces a minimum amount of turns in each conversations length and set the max to the natural maximum turns.  
+-   **`dedupe.py`** ⁸: Dedupes exact and last-assistant exchanges for verbatim repeats and reply-tail clones to ensures dataset uniqueness.  
+-   **`dropcols.py`** ⁹: Drops PII columns.  
+-   **`tos.py`** ¹⁰: Remove ToS risk content (CSA, slurs, doxxing, self-harm, etc.), leet/diacritic aware.
 
 ### 4) Normalization and Stats
 
--   **`fixend.py`:** Normalizes ChatML end tags and spacing so blocks are clean and machine-parseable.
--   **`stats.py`:** Adds per-sample statistics to support sorting, bucketing, and pre-filtering before final dataset assembly.
--
+-   **`fixend.py`** ¹¹: Normalizes ChatML end tags and spacing so blocks are clean and machine-parseable.  
+-   **`stats.py`** ¹²: Adds per-sample statistics to support sorting, bucketing, and pre-filtering before final dataset assembly.
 
 ### 5) Packaging
 
--   **`par.py`:** Converts a `.csv` to `.parquet` with Zstandard compression.
--   **`sortpar.py`:** Sorts samples by turn count, with a capped bonus for long texts.
--   **`cleanpar.py`:** Removes temporary columns → write `train.parquet`.
--   **`parjson.py`:** Emits `dataset_infos.json` from Parquet footer for HF Hub compatibility.
--   **`tokens.py`:** Produces `token.log` with token histograms and totals for capacity planning.
--   **`turnstats.py`**: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
+-   **`par.py`** ¹⁴: Converts a `.csv` to `.parquet` with Zstandard compression.  
+-   **`sortpar.py`** ¹⁵: Sorts samples by turn count, with a capped bonus for long texts.  
+-   **`cleanpar.py`** ¹⁶: Removes temporary columns → write `train.parquet`.  
+-   **`parjson.py`** ¹⁷: Emits `dataset_infos.json` from Parquet footer for HF Hub compatibility.  
+-   **`tokens.py`** ¹³: Produces `token.log` with token histograms and totals for capacity planning.  
+-   **`turnstats.py`** ¹⁸: Displays bucketed histograms of conversation turn counts to profile dataset structure before packaging.
 
 ---
 
@@ -144,28 +143,28 @@ flowchart TD
 
 * [The Dataset Cleaning Toolkit Repo](https://github.com/mookiezi/dataset-cleaning-toolkit)
 * [The Dataset Toolbox Repo](https://github.com/mookiezi/dataset-toolbox)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/splitcsv.py](https://github.com/mookiezi/dataset-toolbox/blob/main/splitcsv.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/combineall.py](https://github.com/mookiezi/dataset-toolbox/blob/main/combineall.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/filterturns.py](https://github.com/mookiezi/dataset-toolbox/blob/main/filterturns.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/dropcols.py](https://github.com/mookiezi/dataset-toolbox/blob/main/dropcols.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py)
-* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/stats.py](https://github.com/mookiezi/dataset-toolbox/blob/main/stats.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/tokens.py](https://github.com/mookiezi/dataset-toolbox/blob/main/tokens.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/par.py](https://github.com/mookiezi/dataset-toolbox/blob/main/par.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/sortpar.py](https://github.com/mookiezi/dataset-toolbox/blob/main/sortpar.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-toolbox//blob/main/cleanpar.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/parjson.py](https://github.com/mookiezi/dataset-toolbox/blob/main/parjson.py)
-* [https://github.com/mookiezi/dataset-toolbox/blob/main/turnstats.py](https://github.com/mookiezi/dataset-toolbox//blob/main/turnstats.py)
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql) ¹
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh) ²
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py) ³
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/splitcsv.py](https://github.com/mookiezi/dataset-toolbox/blob/main/splitcsv.py) ⁴
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartcleansplit.py) ⁵
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/combineall.py](https://github.com/mookiezi/dataset-toolbox/blob/main/combineall.py) ⁶
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/filterturns.py](https://github.com/mookiezi/dataset-toolbox/blob/main/filterturns.py) ⁷
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/dedupe.py) ⁸
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/dropcols.py](https://github.com/mookiezi/dataset-toolbox/blob/main/dropcols.py) ⁹
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/tos.py) ¹⁰
+* [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/fixend.py) ¹¹
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/stats.py](https://github.com/mookiezi/dataset-toolbox/blob/main/stats.py) ¹²
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/tokens.py](https://github.com/mookiezi/dataset-toolbox/blob/main/tokens.py) ¹³
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/par.py](https://github.com/mookiezi/dataset-toolbox/blob/main/par.py) ¹⁴
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/sortpar.py](https://github.com/mookiezi/dataset-toolbox/blob/main/sortpar.py) ¹⁵
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/cleanpar.py](https://github.com/mookiezi/dataset-toolbox//blob/main/cleanpar.py) ¹⁶
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/parjson.py](https://github.com/mookiezi/dataset-toolbox/blob/main/parjson.py) ¹⁷
+* [https://github.com/mookiezi/dataset-toolbox/blob/main/turnstats.py](https://github.com/mookiezi/dataset-toolbox//blob/main/turnstats.py) ¹⁸
 
 ---
 
 ## Shorthand Dataset Construction Sequence
 
-**filter → chains → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnhist**
+**filter → chains → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnstats**
 
