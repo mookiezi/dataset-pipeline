@@ -85,7 +85,7 @@ flowchart TD
 
 ### 1) `process{…}` per message table
 
--   **`chainsrunner` (SQL in `chains.sh`):** Builds reply chains rooted by messages for efficient downstream splits.
+-   **`chainsrunner(.sql)` (SQL in `chains.sh`):** Builds reply chains rooted by messages for efficient downstream splits.
 -   **Path A:** `smartclean.py` for one-shot cleaning of the table dump. Normalizes text, applies structural changes and numerous safety/spam filters, and runs a final format validator before handing off to consolidation.
 -   **Path B:** `split.py` + `smartcleansplit.py` + `combineall.py` for shard-wise cleaning. Output is one CSV per table.
 
