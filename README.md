@@ -142,8 +142,8 @@ flowchart TD
 
 ## Script References
 
-- [The Dataset Cleaning Toolkit Repo](https://github.com/mookiezi/dataset-cleaning-toolkit)
-- [The Dataset Toolbox Repo](https://github.com/mookiezi/dataset-toolbox)
+* [The Dataset Cleaning Toolkit Repo](https://github.com/mookiezi/dataset-cleaning-toolkit)
+* [The Dataset Toolbox Repo](https://github.com/mookiezi/dataset-toolbox)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/filter.sql)
 * [https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh](https://github.com/mookiezi/dataset-toolbox/blob/main/chains.sh)
 * [https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py](https://github.com/mookiezi/dataset-cleaning-toolkit/blob/main/smartclean.py)
