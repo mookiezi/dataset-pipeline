@@ -133,7 +133,7 @@ flowchart TD
 | `turnstats`                  | CSV at final stage            | histogram `.png`, table `.txt` |
 | `par`                        | `_pure_clean_fixed_stats.csv` | `.parquet`                     |
 | `sortpar`                    | `.parquet`                    | `_order.parquet`               |
-| `cleanpar`                   | `_order.parquet`              | `train.parquet`                |
+| `cleanpar`                   | `_sort.parquet`              | `train.parquet`                |
 | `parjson`                    | `train.parquet`               | `dataset_infos.json`           |
 
 
