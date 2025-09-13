@@ -166,5 +166,5 @@ flowchart TD
 
 ## Shorthand Dataset Construction Sequence
 
-**filter → chains → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → par → sortpar → cleanpar → parjson → turnstats**
+**filter → chains → smartclean → (combineall) → filterturns → dedupe → dropcols → tos → fixend → stats → tokens → turnstats → par → sortpar → cleanpar → parjson**
 
