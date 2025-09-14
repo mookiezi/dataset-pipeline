@@ -1,4 +1,4 @@
-# EECaP: End-to-End Dataset Creation Pipeline
+# EEDCaP: End-to-End Dataset Creation Pipeline
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/mookiezi/site/refs/heads/main/Discord-Dataset-Pipeline.png" alt="Dataset Pipeline Header">
